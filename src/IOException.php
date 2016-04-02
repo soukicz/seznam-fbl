@@ -1,5 +1,5 @@
 <?php
-namespace Simplia\SeznamFbl;
+namespace Soukicz\SeznamFbl;
 
 class IOException extends \RuntimeException {
 

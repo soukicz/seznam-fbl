@@ -1,8 +1,8 @@
 {
-  "name": "simplia/seznam-fbl",
+  "name": "soukicz/seznam-fbl",
   "description": "Seznam.cz Feedback Loop",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "Petr Soukup",
@@ -19,12 +19,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Simplia\\SeznamFbl\\": "src/"
+      "Soukicz\\SeznamFbl\\": "src/"
     }
   },
   "autoload-dev": {
     "classmap": [
-      "tests/SimpliaTests"
+      "tests/SoukiczTests"
     ]
   }
 }

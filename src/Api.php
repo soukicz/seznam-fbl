@@ -1,5 +1,5 @@
 <?php
-namespace Simplia\SeznamFbl;
+namespace Soukicz\SeznamFbl;
 
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;

@@ -1,8 +1,8 @@
 <?php
-namespace SimpliaTest\SeznamFbl;
+namespace SoukiczTest\SeznamFbl;
 
-use Simplia\SeznamFbl\Api;
-use Simplia\SeznamFbl\IOException;
+use Soukicz\SeznamFbl\Api;
+use Soukicz\SeznamFbl\IOException;
 
 class LoginTest extends \PHPUnit_Framework_TestCase {
     function testInvalidUsername() {
