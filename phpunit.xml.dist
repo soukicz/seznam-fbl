@@ -14,7 +14,7 @@
          stopOnIncomplete="false"
          stopOnSkipped="false"
 
-         testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader"
+         testSuiteLoaderClass="PHPUnit\Runner\StandardTestSuiteLoader"
          verbose="false">
     <testsuites>
         <testsuite name="SeznamFbl">
