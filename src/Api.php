@@ -84,7 +84,8 @@ class Api {
                     ->setConsumer($td->eq(4)->text());
                 $domains[$domain->getHostname()] = $domain;
             });
-            $link = $crawler->filter('img[src="/images/next.png"]')->parents()->eq(0)->link();
+
+            $link = $crawler->filter('img[src="/static/images/next.png"]')->parents()->eq(0)->link();
 
             $crawler = new Crawler((string)$this->getClient()->get($link->getUri())->getBody(), $link->getUri());
             if($link->getUri() == $lastLink) {
