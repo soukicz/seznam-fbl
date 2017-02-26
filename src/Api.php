@@ -23,7 +23,7 @@ class Api {
                 ]
             ]);
             $this->client->get('https://fbl.seznam.cz/', ['allow_redirects' => false]);
-            $this->client->get('https://fbl.seznam.cz/login/?url=/', ['allow_redirects' => false]);
+            $this->client->get('https://fbl.seznam.cz/rus/login', ['allow_redirects' => false]);
             $this->client->get('https://login.szn.cz/', ['allow_redirects' => false]);
 
             $response = $this->client->post('https://login.szn.cz/api/v1/login', [
