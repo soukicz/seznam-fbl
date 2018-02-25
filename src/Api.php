@@ -104,26 +104,33 @@ class Api {
     public function addDomain(Domain $domain, $confirmationType) {
         $crawler = $this->getFirstCrawler();
 
-        $token = $crawler->filter('input[name=csrf]')->eq(0)->attr('value');
-        $action = 'https://fbl.seznam.cz/addDomain';
+        $token = $crawler->filter('input[name=dom-csrf_token]')->eq(0)->attr('value');
+        $action = 'https://fbl.seznam.cz/api/saveDomain';
 
         $response = $this->getClient()->post($action, [
-            'form_params' => [
+            'exceptions' => false,
+            'headers' => [
+                'Accept' => 'application/json;q=0.9,*/*;q=0.8',
+            ],
+            'json' => [
                 'domain' => $domain->getHostname(),
                 'selector' => $domain->getSelector(),
                 'header' => $domain->getHeader(),
                 'regex' => $domain->getRegex(),
                 'consumer' => $domain->getConsumer(),
                 'response' => $confirmationType,
-                'csrf' => $token,
+                'csrf_token' => $token,
+                'triplet_id' => '',
             ]
         ]);
 
-        $crawler = new Crawler((string)$response->getBody());
-
-        $error = $crawler->filter('div.notify.error');
-        if($error->count()) {
-            throw new IOException($error->eq(0)->text());
+        if($response->getStatusCode() >= 400) {
+            $body = \GuzzleHttp\json_decode($response->getBody(), true);
+            if(isset($body['status']) && $body['status'] === 493) {
+                // already registered
+            } else {
+                throw new IOException($body['msg']);
+            }
         }
     }
 }
